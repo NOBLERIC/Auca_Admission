@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+       
+        .container{
+            width: 40%;
+            margin:0 auto;
+        }
+
+        .logo {
+            max-width: 100%; /* Ensure the logo doesn't exceed its original width */
+            margin-bottom: 20px; /* Add space between the logo and the form */
+        }
+
+        form {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        input[type="tel"],
+        input[type="password"],
+        input[type="submit"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <title>AUCA Student Admission Form</title>
+</head>
+<body>
+    <!-- Student Admission Form -->
+    <img src="auca.png" alt="Logo" class="logo">
+    <div id="student-admission" class="container">
+        <h1>AUCA Student Admission Form</h1>
+        <form id="admission-form">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required><br>
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required><br>
+
+            <label for="fatherName">Father Name:</label>
+            <input type="text" id="fatherName" name="fn" required><br>
+
+            <label for="motherName">Mother Name:</label>
+            <input type="text" id="motherName" name="fn" required><br>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select><br>
+
+            <!-- <label for="course">Course:</label> -->
+            <!-- <input type="text" id="course" name="course" required><br> -->
+
+            <label for="department">Department:</label>
+            <select id="department" name="depart">
+                <option value="software Engineering">Software Engineering</option>
+                <option value="network and Communication System">Network and Communication System</option>
+                <option value="informationManagement">Information Management</option>
+            </select><br>
+
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" rows="4" required></textarea><br>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required><br>
+
+            
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    
+    
+
+    <!-- JavaScript code for handling form switching -->
+    <script>
+        const admissionForm = document.getElementById('admission-form');
+        const nameField = document.getElementById('firstName');
+
+        function validateNameInput() {
+            const nameValue = nameField.value;
+            const validNamePattern = /^[A-Za-z]+$/;
+
+            if (!validNamePattern.test(nameValue)) {
+                alert('Please enter a valid name with only alphabetic characters.');
+                nameField.value = '';
+                nameField.focus();
+                return false;
+            }
+
+            return true;
+        }
+
+        function handleAdmissionFormSubmission(e) {
+    e.preventDefault(); // Prevent the form from submitting by default
+
+    if (!validateNameInput()) {
+        return; // Validation failed, do not proceed with submission
+    }
+
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const email = document.getElementById('email').value;
+
+    if (!firstName || !lastName || !email) {
+        alert('Please fill in all required fields.');
+    } else {
+        // Redirect to login.html if form is valid
+        window.location.href = 'login.html';
+    }
+}
+
+
+
+        admissionForm.addEventListener('submit', handleAdmissionFormSubmission);
+    </script>
+</body>
+</html>
